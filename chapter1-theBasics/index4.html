@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- menulis dengan html biasa -->
+  <!-- <h1>Hello from HTM!</h1> -->
+  <div id="root"></div>
+
+  <script 
+    src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script 
+    crossorigin 
+    src="https://unpkg.com/react@18/umd/react.development.js">
+  </script>
+  <script 
+    crossorigin 
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js">
+  </script>
+  <script type="text/babel">
+    const root = document.querySelector('#root');
+    //memahami react component
+    //basic
+    // const element = (
+    //   <>
+    //     <p>Halo, saya <b>SpiderMan</b></p>
+    //     <p>Halo, saya <b>IronMan</b></p>
+    //     <p>Halo, saya <b>Capten America</b></p>
+    //   </>
+    // );
+
+    //cara ke-2, yaitu membuatkan satu function
+    // function halo(name) {
+    //   return <p>Halo, saya <b>{name}</b></p>
+    // }
+
+    // const element = (
+    //   <>
+    //     {halo('Batman')}
+    //     {halo('Joker')}
+    //     {halo('Harley Quinn')}
+    //   </>
+    // );
+
+    //cara ke-3, yaitu dengan menggunakan react component
+    //function akan error karena parameter tidak berupa props
+    // function Halo(zodiac) {
+    //   return <p>Halo, zodiac saya <b>{zodiac}</b></p>
+    // }
+    //function tidak error karena paramenter sudah diganti ke props
+    //output dari props ini berupa obejct sehingga pemanggilannya juga mengikuti cara object
+    function Halo(props) {
+      return <p>Halo, zodiac saya <b>{props.zodiac}</b></p>
+    }
+
+    const element = (
+      <>
+        <Halo zodiac='Scorpio'/>
+        <Halo zodiac='Aquarius'/>
+        <Halo zodiac='Gemini'/>
+      </>
+    );
+
+    ReactDOM.render(element, root)
+  </script>
+</body>
+</html>

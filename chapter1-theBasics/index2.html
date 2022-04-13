@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- menulis dengan html biasa -->
+  <!-- <h1>Hello from HTM!</h1> -->
+  <div id="root"></div>
+
+  <script 
+    crossorigin 
+    src="https://unpkg.com/react@18/umd/react.development.js">
+  </script>
+  <script 
+    crossorigin 
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js">
+  </script>
+  <script>
+    const root = document.querySelector('#root');
+
+    //memahami nested element
+    //Basic
+    // const li = React.createElement('li', {
+    //   children: 'Apel'
+    // });
+    // const li1 = React.createElement('li', {
+    //   children: 'Mangga'
+    // });
+    // const li2 = React.createElement('li', {
+    //   children: 'Alpukat'
+    // });
+
+    // const element = React.createElement('ul', {
+    //   children: [li, li1, li2],
+    //   className: 'list'
+    // })
+
+    //cara ke-2, dengan menuliskan className di parameter ke-2, dan children di param ke-3 dst
+    // const element = React.createElement('ul', {clasName: 'list'}, 'Hello React!')
+    // const element = React.createElement(
+    //   'ul', 
+    //   {clasName: 'list'}, 
+    //   li,
+    //   li1,
+    //   li2
+    // )
+
+    //cara ke-3
+    const element = React.createElement(
+      'ul', 
+      {clasName: 'list'}, 
+      React.createElement('li', null, 'Apel'),
+      React.createElement('li', null, 'leci'),
+      React.createElement('li', null, 'Anggur')
+    )
+
+
+    /**
+    // memahami fragment
+    const p1 = React.createElement('p', {
+      children: 'Hello paragraf 1',
+    });
+
+    const p2 = React.createElement('p', {
+      children: 'Hello paragraf 2',
+    });
+    //menambahkan div sebagai parent dari p1, p2 => cause gak bisa dirender satu-satu
+    // const element = React.createElement('div', {
+    //   children: [p1, p2]
+    // });
+    
+    //menggunakan react.Fragment sebagai empty untuk membungkus p1, p2
+    const element = React.createElement(React.Fragment, {
+      children: [p1, p2]
+    });**/
+
+    ReactDOM.render(element, root)
+  </script>
+</body>
+</html>
