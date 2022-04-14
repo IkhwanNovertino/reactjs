@@ -4,8 +4,8 @@ const root = document.querySelector('#root'); // cara basic
 //     alert('Hello, saya button')
 //   }}>Click Me</button>
 // )
-//cara ke-2, dengan membuat function terpisah
 
+//cara ke-2, dengan membuat function terpisah
 function hello() {
   alert('Hello, saya dari function hello');
 } // const element = (
@@ -15,10 +15,9 @@ function hello() {
 // const element = (
 //   <button onClick={hello()}>Click Me</button>
 // )
+
 //cara ke-3, jika ingin menambahkan sebuah message ke dalam argument function
 //gunakan keyword namaFunction.bind(this, "message")
-
-
 function clickMe(msg) {
   alert(msg);
 }

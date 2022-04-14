@@ -1,5 +1,5 @@
 const root = document.querySelector('#root');
-
+//inline-style
 const element = (
   <div
     style={{
