@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "babel src --out-dir public",
+    "build": "babel src --out-dir public -w",
     "serve": "lite-server --baseDir public",
     "start": "yarn build && yarn serve"
   },
