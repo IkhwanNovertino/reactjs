@@ -1,0 +1,17 @@
+{
+  "name": "chapter2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src --out-dir public",
+    "serve": "lite-server --baseDir public",
+    "start": "yarn build && yarn serve"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.9",
+    "@babel/preset-react": "^7.16.7",
+    "lite-server": "^2.6.1"
+  }
+}
