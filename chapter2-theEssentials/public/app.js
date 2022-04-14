@@ -1,28 +1,25 @@
-const root = document.querySelector('#root'); // cara basic
-// const element = (
-//   <button onClick={function () {
-//     alert('Hello, saya button')
-//   }}>Click Me</button>
-// )
+const root = document.querySelector('#root'); //Component and state (state hooks)
 
-//cara ke-2, dengan membuat function terpisah
-function hello() {
-  alert('Hello, saya dari function hello');
-} // const element = (
-//   <button onClick={hello}>Click Me</button>
-// )
-//code ini tidak sesuai keinginan karena alert dieksekusi terlebih dahulu
-// const element = (
-//   <button onClick={hello()}>Click Me</button>
-// )
-
-//cara ke-3, jika ingin menambahkan sebuah message ke dalam argument function
-//gunakan keyword namaFunction.bind(this, "message")
-function clickMe(msg) {
-  alert(msg);
+function App() {
+  /**
+  //React useState menghasilkan array dengan 2 element
+  const state = React.useState(0);
+    const count = state[0] //mengambil value element pertama dari state
+  const updateState = state[1] //mengambil value element kedua dari state
+    // console.log(state); //cek apa isi dari state
+   */
+  //Menggunakan ES6
+  //biasa ES6 menggunakan keyword set dari pada update
+  const [count, setState] = React.useState(0);
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("button", {
+    onClick: function () {
+      setState(count - 1);
+    }
+  }, " - "), /*#__PURE__*/React.createElement("span", null, count), /*#__PURE__*/React.createElement("button", {
+    onClick: function () {
+      setState(count + 1);
+    }
+  }, " + "));
 }
 
-const element = /*#__PURE__*/React.createElement("button", {
-  onClick: clickMe.bind(this, 'Hello, saya dari function clickMe()')
-}, "Click Me");
-ReactDOM.render(element, root);
+ReactDOM.render( /*#__PURE__*/React.createElement(App, null), root);
