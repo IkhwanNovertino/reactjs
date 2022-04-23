@@ -1,25 +1,27 @@
-const root = document.querySelector('#root'); //DOM Manipulation (Ref Hooks)
+const root = document.querySelector('#root'); //React list & keys
+
+/**
+ * Keys-nya nanti bisa berupa productId, karena keys harus merupakan uniq value
+ */
 
 function App() {
-  const judulRef = React.useRef(null); // Manipulasi DOM manual
-  // React.useEffect(() => {
-  //   const judul = document.getElementById('judul')
-  //   console.log(judul);
-  //   setTimeout(() => {
-  //     judul.textContent= 'Web Page'
-  //   }, 2000);
-  // })
-  // Manipulasi DOM menggunakan  Ref Hooks
-
-  React.useEffect(() => {
-    console.log(judulRef);
-    setTimeout(() => {
-      judulRef.current.textContent = 'Web Page';
-    }, 2000);
-  });
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", {
-    ref: judulRef
-  }, "Application"));
+  //Menampilkan list dengan memanfaatkan fitur yang ada di react
+  const fruits = ['Apple', 'Manggo', 'Avocado'];
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "React Application"), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("b", null, "Menampilkan list secara manual")), /*#__PURE__*/React.createElement("li", null, "Apple"), /*#__PURE__*/React.createElement("li", null, "Orange"), /*#__PURE__*/React.createElement("li", null, "Manggo"), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("b", null, "Menampilkan list dengan React List & Keys")), fruits.map(fruit => {
+    return /*#__PURE__*/React.createElement("li", {
+      key: fruit
+    }, fruit);
+  }))); //Menampilkan list secara manual
+  // return (
+  //   <>
+  //     <h2>React Application</h2>
+  //     <ul>
+  //       <li>Apple</li>
+  //       <li>Orange</li>
+  //       <li>Manggo</li>
+  //     </ul>
+  //   </>
+  // )
 }
 
 ReactDOM.render( /*#__PURE__*/React.createElement(App, null), root);
