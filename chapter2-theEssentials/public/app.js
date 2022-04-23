@@ -1,25 +1,42 @@
-const root = document.querySelector('#root'); //React list & keys
-
-/**
- * Keys-nya nanti bisa berupa productId, karena keys harus merupakan uniq value
- */
+const root = document.querySelector('#root'); // React Form
 
 function App() {
-  //Menampilkan list dengan memanfaatkan fitur yang ada di react
-  const fruits = ['Apple', 'Manggo', 'Avocado'];
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "React Application"), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("b", null, "Menampilkan list secara manual")), /*#__PURE__*/React.createElement("li", null, "Apple"), /*#__PURE__*/React.createElement("li", null, "Orange"), /*#__PURE__*/React.createElement("li", null, "Manggo"), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("b", null, "Menampilkan list dengan React List & Keys")), fruits.map(fruit => {
-    return /*#__PURE__*/React.createElement("li", {
-      key: fruit
-    }, fruit);
-  }))); //Menampilkan list secara manual
+  //Membuat Form menggunakan state (control component)
+  const [nama, setNama] = React.useState('Xavi');
+
+  function submitForm(event) {
+    event.preventDefault();
+    console.log('Form berhasil di-submit');
+    console.log('Nama :', nama);
+  }
+
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "React Application"), /*#__PURE__*/React.createElement("form", {
+    onSubmit: submitForm
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", null, "Nama :"), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    name: "nama",
+    value: nama,
+    onChange: event => setNama(event.target.value)
+  })), /*#__PURE__*/React.createElement("button", {
+    type: "submit"
+  }, "Kirim"))); //Membuat Form secara manual (uncontrol component) dengan bantuan refHooks
+  // const namaRef= React.useRef(null)
+  // function submitForm(event) {
+  //   event.preventDefault();
+  //   const nama = namaRef.current.value;
+  //   console.log('Form berhasil di-submit');
+  //   console.log('Nama :', nama);
+  // }
   // return (
   //   <>
   //     <h2>React Application</h2>
-  //     <ul>
-  //       <li>Apple</li>
-  //       <li>Orange</li>
-  //       <li>Manggo</li>
-  //     </ul>
+  //     <form onSubmit={submitForm}>
+  //       <div>
+  //         <label>Nama :</label>
+  //         <input type='text' name='nama' ref={namaRef}/>
+  //       </div>
+  //       <button type="submit">Kirim</button>
+  //     </form>
   //   </>
   // )
 }
