@@ -1,44 +1,27 @@
-const root = document.querySelector('#root'); // React Form
+const root = document.querySelector('#root'); // Data fetch
 
 function App() {
-  //Membuat Form menggunakan state (control component)
-  const [nama, setNama] = React.useState('Xavi');
+  //Data fetch menggunakan async await
+  React.useEffect(() => {
+    const getData = async () => {
+      const req = await fetch('https://api.spaceflightnewsapi.net/v3/blogs'); // console.log(req);
 
-  function submitForm(event) {
-    event.preventDefault();
-    console.log('Form berhasil di-submit');
-    console.log('Nama :', nama);
-  }
+      const res = await req.json();
+      console.log(res);
+    };
 
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "React Application"), /*#__PURE__*/React.createElement("form", {
-    onSubmit: submitForm
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", null, "Nama :"), /*#__PURE__*/React.createElement("input", {
-    type: "text",
-    name: "nama",
-    value: nama,
-    onChange: event => setNama(event.target.value)
-  })), /*#__PURE__*/React.createElement("button", {
-    type: "submit"
-  }, "Kirim"))); //Membuat Form secara manual (uncontrol component) dengan bantuan refHooks
-  // const namaRef= React.useRef(null)
-  // function submitForm(event) {
-  //   event.preventDefault();
-  //   const nama = namaRef.current.value;
-  //   console.log('Form berhasil di-submit');
-  //   console.log('Nama :', nama);
-  // }
-  // return (
-  //   <>
-  //     <h2>React Application</h2>
-  //     <form onSubmit={submitForm}>
-  //       <div>
-  //         <label>Nama :</label>
-  //         <input type='text' name='nama' ref={namaRef}/>
-  //       </div>
-  //       <button type="submit">Kirim</button>
-  //     </form>
-  //   </>
-  // )
+    getData();
+  }); //Data fetch menggunakan promise
+  // React.useEffect(() => {
+  //   const getData = fetch('https://api.spaceflightnewsapi.net/v3/blogs')
+  //     .then((res) => {
+  //       return res.json();
+  //     }).then((response) => {
+  //       return response;
+  //     })
+  // }, [])
+
+  return /*#__PURE__*/React.createElement("h1", null, "Data Fetch");
 }
 
 ReactDOM.render( /*#__PURE__*/React.createElement(App, null), root);
